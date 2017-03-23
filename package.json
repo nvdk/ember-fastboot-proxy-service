@@ -1,0 +1,24 @@
+{
+  "name": "ember-fastboot-proxy-service",
+  "version": "0.0.1",
+  "description": "a fastboot proxy service for mu-semte.ch",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cecemel/ember-fastboot-proxy-service.git"
+  },
+  "author": "cecemel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cecemel/ember-fastboot-proxy-service/issues"
+  },
+  "homepage": "https://github.com/cecemel/ember-fastboot-proxy-service#readme",
+  "dependencies": {
+    "fastboot-app-server": "^1.0.0-rc.5",
+    "http-proxy": "^1.16.2"
+  }
+}
