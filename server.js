@@ -2,23 +2,21 @@ const ExpressHTTPServer = require('fastboot-app-server/src/express-http-server')
 const FastBootAppServer = require('fastboot-app-server');
 const httpProxy = require('http-proxy');
 
-const backend = process.env.BACKEND;
-const serverPort = process.env.PORT || 80;
-const emberPath =  /(^\/(assets|fonts).*)|(^\/$)/;
+const backendUrl = 'http://' + process.env.BACKEND;
+const assetsReg =  /^\/(assets|fonts)\/.*/;
 
 const httpServer = new ExpressHTTPServer({});
 const app = httpServer.app;
 const proxy = httpProxy.createProxyServer({});
 
-app.use((request, response, next) => {
-    if(emberPath.test(request.url)){
-        next();
+app.use((req, resp, next) => {
+    if(!/html/.test(req.get('accept')) && !assetsReg.test(req.url)){
+        proxy.web(req, resp, {
+            target: backendUrl
+        });
         return;
     }
-    proxy.web(request, response, {
-        target: backend
-    });
-
+    next();
 });
 
 let server = new FastBootAppServer({
