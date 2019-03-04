@@ -7,7 +7,7 @@ Assumes you've built your FastBoot app.
     docker run --name my-app \
         -p "80:80" \
         --link my-backend-container:backend \
-        -v /path/to/spa/dist:/dist \
+        -v /path/to/spa/dist:/app \
         -d cecemel/ember-fastboot-proxy-service
 ```
 
