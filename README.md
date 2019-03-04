@@ -19,6 +19,16 @@ Defaults are:
 BACKEND: 'http://backend'
 ASSETS: '^\/(assets|fonts)\/.*'
 DISTPATH: '/app'
-GZIP: 'true'
-CHUNKED: 'true'
+GZIP: 'false'
+CHUNKED: 'false'
 ```
+### Quirks
+Currently some additional mapping is needed to make sure the rendering by the fastboot app works.
+In docker-compose
+```
+services:
+  fastboot:
+    extra_hosts
+     - "target.hostname.of.incoming.request:127.0.0.1"
+```
+As single container, you could use the --add-host parameter. (Never tested this though)
