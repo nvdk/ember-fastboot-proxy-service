@@ -7,7 +7,7 @@ const assetsReg =  new RegExp(process.env.ASSETS || '^\/(assets|fonts)\/.*');
 const distPath = process.env.DISTPATH || '/app';
 const port = 80;
 const gzip = process.env.GZIP == 'true';
-const chunked = process.env.CHUNKED == 'true';
+const chunkedResponse = process.env.CHUNKED == 'true';
 
 
 console.log(`Running with config`);
@@ -38,7 +38,7 @@ let server = new FastBootAppServer({
   httpServer,
   port,
   gzip,
-  chunked
+  chunkedResponse
 });
 
 server.start();
