@@ -1,7 +1,7 @@
 {
   "name": "ember-fastboot-proxy-service",
-  "version": "0.0.1",
-  "description": "Hosting an FastBoot Ember app with a backend API",
+  "version": "0.0.2",
+  "description": "Hosting an FastBoot Ember app with a mu.semte.ch backend",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/cecemel/ember-fastboot-proxy-service#readme",
   "dependencies": {
-    "fastboot-app-server": "^1.0.1",
-    "http-proxy": "^1.16.2"
+    "fastboot-app-server": "^1.1.0",
+    "http-proxy": "^1.17"
   }
 }

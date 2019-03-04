@@ -21,7 +21,7 @@ app.use((req, resp, next) => {
 
 let server = new FastBootAppServer({
     distPath: '/dist',
-    httpServer: httpServer,
+    httpServer: httpServer
 });
 
 server.start();

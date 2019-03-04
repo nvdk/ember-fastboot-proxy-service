@@ -1,4 +1,4 @@
-FROM node:6.9.5
+FROM node:10.15.0-alpine
 RUN mkdir -p /server
 COPY package.json /server/
 WORKDIR /server
