@@ -23,7 +23,7 @@ GZIP: 'false'
 CHUNKED: 'false'
 ```
 ### Quirks
-Currently some additional mapping is needed to make sure the rendering by the fastboot app works.
+Redirects. E.g. your server redirects https to http. As a workaround some additional mapping is needed to make sure the rendering by the fastboot app works. (If you have better solution, let me know)
 In docker-compose
 ```
 services:
