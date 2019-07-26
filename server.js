@@ -9,7 +9,7 @@ const backendUrl = process.env.BACKEND || 'http://backend' ;
 const assetsReg =  new RegExp(process.env.STATIC_FOLDERS_REGEX || '^\/(assets|fonts)\/.*');
 const distPath = '/app';
 const port = 80;
-const gzip = process.env.GZIP == 'true';
+const gzip = process.env.GZIP == 'false' ? false : true;
 const chunkedResponse = process.env.CHUNKED == 'true';
 const liveReload = process.env.LIVE_RELOAD == 'true';
 

@@ -21,7 +21,7 @@ services:
     environment:
       - BACKEND: 'http://backend'
       - STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
-      - GZIP: 'false'
+      - GZIP: 'true'
       - CHUNKED: 'false'
       - LIVE_RELOAD: 'false'
 ```
