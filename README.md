@@ -17,8 +17,7 @@ The ones found in https://github.com/ember-fastboot/fastboot-app-server#quick-st
 Defaults are:
 ```
 BACKEND: 'http://backend'
-ASSETS: '^\/(assets|fonts)\/.*'
-DISTPATH: '/app'
+STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
 GZIP: 'false'
 CHUNKED: 'false'
 ```
