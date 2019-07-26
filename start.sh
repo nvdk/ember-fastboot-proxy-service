@@ -16,7 +16,9 @@ then
        volumes:
           - /absolute/path/to/your/ember-fastboot-proxy-service/server.js:/server/server.js
     '
+    echo "Starting DEBUG"
     supervisor -w . -- --inspect=0.0.0.0:9229 server.js;
 else
+    echo "Starting PROD"
     node server.js;
 fi
