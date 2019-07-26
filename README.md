@@ -16,10 +16,14 @@ Remaining requests are proxied to the backend API.
 The ones found in https://github.com/ember-fastboot/fastboot-app-server#quick-start.
 Defaults are:
 ```
-BACKEND: 'http://backend'
-STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
-GZIP: 'false'
-CHUNKED: 'false'
+services:
+  fastboot:
+    environment:
+      - BACKEND: 'http://backend'
+      - STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
+      - GZIP: 'false'
+      - CHUNKED: 'false'
+      - LIVE_RELOAD: 'false'
 ```
 ## Quirks
 ### Redirects
