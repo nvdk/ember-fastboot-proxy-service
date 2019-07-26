@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/cecemel/ember-fastboot-proxy-service#readme",
   "dependencies": {
-    "fastboot-app-server": "^1.1.0",
-    "http-proxy": "^1.17"
+    "fastboot-app-server": "^2.0.0",
+    "http-proxy": "^1.17",
     "supervisor": "^0.12.0"
   }
 }
