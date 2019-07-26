@@ -1,10 +1,10 @@
 FROM node:10.15.0-alpine
 RUN mkdir -p /server
+RUN npm install supervisor -g
 COPY package.json /server/
 WORKDIR /server
 RUN npm install
-COPY server.js /server/
+COPY . /server/
 RUN mkdir -p /app
 EXPOSE 80
-ENV DISTPATH /app
-ENTRYPOINT cd $DISTPATH && npm install && cd /server/ && node server.js
+CMD [ "/bin/sh", "start.sh"]
