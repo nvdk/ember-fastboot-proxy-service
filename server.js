@@ -27,7 +27,11 @@ app.use((req, resp, next) => {
 
   if(assetsReg.test(req.url)){
     fs.access(path.join(distPath, req.url), (err) => {
-      err ? forward(req, resp) : next();
+      if(err) forward(req, resp);
+      else {
+        console.log(`fetching from assets folder: ${req.url}`);
+        next();
+      }
     });
     return;
   }
