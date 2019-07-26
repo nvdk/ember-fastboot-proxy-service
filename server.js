@@ -16,6 +16,13 @@ const liveReload = process.env.LIVE_RELOAD == 'true';
 console.log(`Running with config`);
 console.log(` ${backendUrl}, ${assetsReg}, ${distPath}, ${gzip}, ${chunkedResponse}`);
 
+let config = {
+  distPath,
+  port,
+  gzip,
+  chunkedResponse
+};
+
 //Notifier: manages live reload.
 const notifier = new FSNotifier({
   targetDir: distPath
@@ -26,14 +33,15 @@ if(liveReload){
 }
 
 const httpServer = new ExpressHTTPServer({port});
-const app = httpServer.app;
-const proxy = httpProxy.createProxyServer({});
+config["httpServer"] =  httpServer;
 
+const proxy = httpProxy.createProxyServer({});
 const forward = function(req, resp){
   console.log(`proxying through: ${req.url} with ${req.get('accept')}`);
   proxy.web(req, resp, { target: backendUrl });
 };
 
+const app = httpServer.app;
 app.use((req, resp, next) => {
 
   if(assetsReg.test(req.url)){
@@ -56,12 +64,6 @@ app.use((req, resp, next) => {
   next();
 });
 
-let server = new FastBootAppServer({
-  distPath,
-  httpServer,
-  port,
-  gzip,
-  chunkedResponse
-});
+let server = new FastBootAppServer(config);
 
 server.start();
