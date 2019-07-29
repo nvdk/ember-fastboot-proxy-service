@@ -27,9 +27,10 @@ let config = {
 const notifier = new FSNotifier({
   targetDir: distPath
 });
+
 if(liveReload){
   console.log('Live reload enabled');
-  config[notifier] = notifier;
+  config["notifier"] = notifier;
 }
 
 const httpServer = new ExpressHTTPServer({port});
