@@ -19,11 +19,11 @@ Defaults are:
 services:
   fastboot:
     environment:
-      - BACKEND: 'http://backend'
-      - STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
-      - GZIP: 'true'
-      - CHUNKED: 'false'
-      - LIVE_RELOAD: 'false'
+      BACKEND: 'http://backend'
+      STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
+      GZIP: 'true'
+      CHUNKED: 'false'
+      LIVE_RELOAD: 'false'
 ```
 ## Quirks
 ### Redirects
