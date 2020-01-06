@@ -9,7 +9,7 @@ if [ "$NODE_ENV" == "development" ]
 then
     : '
        Debugging is not 100% ok. Consider this a hidden feature.
-       Only live reload works for now
+       Only live reload works for now. Attaching to a debugger not.
        In your docker-compose.override.file, the following should help:
        environment:
          NODE_ENV: "development"
