@@ -27,6 +27,9 @@ services:
       LIVE_RELOAD: 'false'
 ```
 ## Quirks
+
+Mainly issues related to running the server in Docker.
+
 ### Redirects
 If in ONLY_RUN_FASTBOOT: 'false' and your server redirects https to http. As a workaround some additional mapping is needed to make sure the rendering by the fastboot app works. (If you have better solution, let me know)
 In docker-compose
@@ -36,6 +39,19 @@ services:
     extra_hosts
      - "target.hostname.of.incoming.request:127.0.0.1"
 ```
+### Testing on a local machine
+So far, I haven't found a way to tell fastboot server to use another host for fetching data from the backend.
+Current solution:
+* On your localhost, create a custom DNS entry (e.g. in /etc/hosts) and map it to 127.0.0.1 (e.g cecemel-box to 127.0.0.1)
+* Find the ip-adress of docker0 on your localhost
+* In docker-compose
+```
+services:
+  fastboot:
+    extra_hosts:
+      - "custom-DNS-entry:ip.address.of.docker0"
+```
+* In your browser: http://custom-DNS-entry
 ### TODO's
   - GZIP is not working
   - Develop mode needs tweaking. See start.sh script to enable the immature version of it.
