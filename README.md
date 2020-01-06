@@ -19,12 +19,12 @@ Defaults are:
 services:
   fastboot:
     environment:
-      - ONLY_RUN_FASTBOOT: 'false' # optional: if the sole thing this service needs is to pre-render, all other calls (e.g. assets, api) are managed on another level.
-      - BACKEND: 'http://backend'
-      - STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
-      - GZIP: 'true'
-      - CHUNKED: 'false'
-      - LIVE_RELOAD: 'false'
+      ONLY_RUN_FASTBOOT: 'false' # optional: if the sole thing this service needs is to pre-render, all other calls (e.g. assets, api) are managed on another level.
+      BACKEND: 'http://backend'
+      STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
+      GZIP: 'true'
+      CHUNKED: 'false'
+      LIVE_RELOAD: 'false'
 ```
 ## Quirks
 ### Redirects
