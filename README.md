@@ -19,7 +19,7 @@ Defaults are:
 services:
   fastboot:
     environment:
-      - ONLY_RUN_FASTBOOT: 'false' # optional: if the sole thing this service needs is to pre-render, all other calls (e.g. assets, api) are managed on another level. 
+      - ONLY_RUN_FASTBOOT: 'false' # optional: if the sole thing this service needs is to pre-render, all other calls (e.g. assets, api) are managed on another level.
       - BACKEND: 'http://backend'
       - STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
       - GZIP: 'true'
@@ -28,7 +28,7 @@ services:
 ```
 ## Quirks
 ### Redirects
-E.g. your server redirects https to http. As a workaround some additional mapping is needed to make sure the rendering by the fastboot app works. (If you have better solution, let me know)
+If in ONLY_RUN_FASTBOOT: 'false' and your server redirects https to http. As a workaround some additional mapping is needed to make sure the rendering by the fastboot app works. (If you have better solution, let me know)
 In docker-compose
 ```
 services:
