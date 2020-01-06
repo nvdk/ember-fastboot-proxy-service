@@ -1,6 +1,6 @@
 {
   "name": "ember-fastboot-proxy-service",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Hosting an FastBoot Ember app with a mu.semte.ch backend",
   "main": "server.js",
   "scripts": {
