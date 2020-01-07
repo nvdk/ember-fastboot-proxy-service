@@ -10,8 +10,8 @@ console.log(`Running with config:`);
 const onlyRunFastboot = process.env.ONLY_RUN_FASTBOOT == 'true';
 console.log(`ONLY_RUN_FASTBOOT: ${onlyRunFastboot}`);
 
-const backendUrl = process.env.BACKEND || 'http://backend' ;
-console.log(`BACKEND: ${backendUrl}`);
+const backendHost = process.env.BACKEND_HOST || 'backend';
+console.log(`BACKEND: ${backendHost}`);
 
 const assetsReg =  new RegExp(process.env.STATIC_FOLDERS_REGEX || '^\/(assets|fonts)\/.*');
 console.log(`STATIC_FOLDERS_REGEX: ${assetsReg}`);
@@ -55,7 +55,7 @@ config["httpServer"] =  httpServer;
 const proxy = httpProxy.createProxyServer({});
 const forward = function(req, resp){
   console.log(`proxying through: ${req.url} with ${req.get('accept')}`);
-  proxy.web(req, resp, { target: backendUrl });
+  proxy.web(req, resp, { target: `http://${backendHost}` });
 };
 
 const app = httpServer.app;
@@ -80,6 +80,8 @@ app.use((req, resp, next) => {
     }
 
   }
+
+  req.headers.host = backendHost;
 
   console.log(`pre-rendering: ${req.url} with headers: ${JSON.stringify(req.headers, null, 4)}`);
   next();

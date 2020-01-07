@@ -20,7 +20,6 @@ services:
   fastboot:
     environment:
       ONLY_RUN_FASTBOOT: 'false' # optional: if the sole thing this service needs is to pre-render, all other calls (e.g. assets, api) are managed on another level.
-      BACKEND: 'http://backend'
       STATIC_FOLDERS_REGEX: '^\/(assets|fonts)\/.*'
       GZIP: 'true'
       CHUNKED: 'false'
@@ -39,19 +38,13 @@ services:
     extra_hosts
      - "target.hostname.of.incoming.request:127.0.0.1"
 ```
-### Testing on a local machine
-So far, I haven't found a way to tell fastboot server to use another host for fetching data from the backend.
-Current solution:
-* On your localhost, create a custom DNS entry (e.g. in /etc/hosts) and map it to 127.0.0.1 (e.g cecemel-box to 127.0.0.1)
-* Find the ip-adress of docker0 on your localhost
-* In docker-compose
+### In mu-semtech
 ```
 services:
   fastboot:
-    extra_hosts:
-      - "custom-DNS-entry:ip.address.of.docker0"
+    links:
+      - identifier:backend
 ```
-* In your browser: http://custom-DNS-entry
 ### TODO's
   - GZIP is not working
   - Develop mode needs tweaking. See start.sh script to enable the immature version of it.
