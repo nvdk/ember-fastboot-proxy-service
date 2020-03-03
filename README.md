@@ -46,6 +46,5 @@ services:
       - identifier:backend
 ```
 ### TODO's
-  - GZIP is not working
   - Develop mode needs tweaking. See start.sh script to enable the immature version of it.
 As single container, you could use the --add-host parameter. (Never tested this though)
