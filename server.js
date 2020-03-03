@@ -4,7 +4,7 @@ const httpProxy = require('http-proxy');
 const fs = require('fs');
 const path = require('path');
 const FSNotifier = require('fastboot-fs-notifier');
-
+const compression = require('compression')
 console.log(`Running with config:`);
 
 const onlyRunFastboot = process.env.ONLY_RUN_FASTBOOT == 'true';
@@ -59,6 +59,9 @@ const forward = function(req, resp){
 };
 
 const app = httpServer.app;
+if (gzip)
+  app.use(compression());
+
 app.use((req, resp, next) => {
 
   if(!onlyRunFastboot){
